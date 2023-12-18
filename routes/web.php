@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\IssueController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,6 +46,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customers.show');
     Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
     Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
+
+    // Customer routes
+    Route::get('/issues/create', [IssueController::class, 'create'])->name('issues.create');
+    Route::post('issues/store', [IssueController::class, 'store'])->name('issues.store');
+    Route::get('issues', [IssueController::class, 'index'])->name('issues.index');
+    Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issues.show');
+    Route::get('/issues/{issue}/edit', [IssueController::class, 'edit'])->name('issues.edit');
+    Route::put('/issues/{issue}', [IssueController::class, 'update'])->name('issues.update');
 });
 
 
