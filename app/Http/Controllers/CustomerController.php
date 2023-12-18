@@ -26,6 +26,8 @@ class CustomerController extends Controller
         $perPage = 10;
         $customers = $this->customerRepository->all($perPage);
 
+        
+
         return view('customers.list', compact('customers'));
     }
 

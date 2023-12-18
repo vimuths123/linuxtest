@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -54,6 +55,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issues.show');
     Route::get('/issues/{issue}/edit', [IssueController::class, 'edit'])->name('issues.edit');
     Route::put('/issues/{issue}', [IssueController::class, 'update'])->name('issues.update');
+
+    // Order routes
+    Route::get('/place_order', [OrderController::class, 'placeOrder'])->name('order.place');
+    Route::post('/store_order', [OrderController::class, 'storePlacedOrder'])->name('order.store');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
 
 
