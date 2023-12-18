@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+    // Customer routes
+    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+    Route::post('customers/store', [CustomerController::class, 'store'])->name('customers.store');
+    Route::get('customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customers.show');
+    Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+    Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
 });
 
 
