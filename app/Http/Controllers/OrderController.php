@@ -81,7 +81,11 @@ class OrderController extends Controller
                     'amount' => $amount,
                 ]);
             }
+
+            return redirect()->route('orders.index')->with('success', 'Order created successfully.');
         }
+
+        return redirect()->back()->with('Error', "Something wrong. Please contact administrator.");            
     }
 
     public function show($id)
